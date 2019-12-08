@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+   <title>	
+   	Libros
+   </title>
+</h:head>
+<h:body>
+	<ui:composition template="menu.xhtml">
+		
+		<ui:define name="content">
+			<h1>Contenido para el Libros</h1>
+			
+			<h:form>
+				<h:panelGrid columns="3">
+					<h:outputLabel value="Descripcion:" for="descripcion"/>
+					<h:inputTextarea value="#{librosMB.libro.descripcion}" id="descripcion"/>
+					<h:message for="descripcion"/>
+				</h:panelGrid>
+				
+				<h:panelGrid columns="3">
+					<h:outputLabel value="Titulo:" for="titulo"/>
+					<h:inputText value="#{librosMB.libro.titulo}" id="titulo"/>
+					<h:message for="titulo"/>
+				</h:panelGrid>
+				
+				<h:panelGrid columns="3">
+					<h:outputLabel value="Portada:" for="portada"/>
+					<h:inputText value="#{librosMB.libro.portada}" id="portada"/>
+					<h:message for="portada"/>
+				</h:panelGrid>
+				
+				<h:panelGrid columns="3">
+					<h:outputLabel value="Fecha publicacion:" for="fecha"/>
+					<h:inputText value="#{librosMB.libro.fechaPublicacion}" id="fecha">
+						<f:convertDateTime pattern="dd/MM/yyyy"/>
+					</h:inputText>
+					<h:message for="fecha"/>
+				</h:panelGrid>
+				
+				<h:panelGrid columns="3">
+					<h:outputLabel value="Numero paginas:" for="paginas"/>
+					<h:inputText value="#{librosMB.libro.paginas}" id="paginas"/>
+					<h:message for="paginas"/>
+				</h:panelGrid>
+				
+				<h:panelGrid columns="3">
+					<h:outputLabel value="Precio:" for="precio"/>
+					<h:inputText value="#{librosMB.libro.precio}" id="precio"/>
+					<h:message for="precio"/>
+				</h:panelGrid>
+				
+				<h:commandButton action="#{librosMB.crearLibro()}" value="Guardar" />
+			</h:form>
+			
+			
+			
+		</ui:define>	
+
+	</ui:composition>
+</h:body>
+	
+	
+</html>

@@ -10,6 +10,7 @@ public class CategoriaDao {
 	private EntityManager em;
 	
 	public void crearCategoria(Categoria categoria) {
+		System.out.println("DAO "+categoria.toString());
 		em.persist(categoria);
 	}
 	

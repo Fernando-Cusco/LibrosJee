@@ -5,6 +5,7 @@ import javax.persistence.EntityManager;
 
 import modelo.Libro;;
 
+
 public class LibroDao {
 	@Inject
 	private EntityManager em;

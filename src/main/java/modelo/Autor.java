@@ -1,18 +1,24 @@
 package modelo;
 
+import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "autores")
-public class Autor {
+public class Autor implements Serializable{
 	
 	@Id
+	@GeneratedValue
 	private int id;
 	
 	@NotNull
@@ -30,8 +36,10 @@ public class Autor {
 	@NotNull
 	private int numeroPublicacion;
 	
-	
+	@OneToMany(cascade = {CascadeType.ALL})
+	@JoinColumn(name = "autor", referencedColumnName = "id")
 	private List<Libro> libroList;
+	
 	public int getId() {
 		return id;
 	}

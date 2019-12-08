@@ -2,6 +2,7 @@ package vista;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
+import javax.inject.Inject;
 
 import modelo.Autor;
 import modelo.Categoria;
@@ -9,6 +10,7 @@ import modelo.Compra;
 import modelo.Libro;
 import modelo.Usuario;
 import modelo.Voto;
+import negocio.GestionLibroON;
 
 @ManagedBean
 public class LibrosMB {
@@ -19,6 +21,9 @@ public class LibrosMB {
 	private Usuario usuario;
 	private Voto voto;
 	private Compra compra;
+	
+	@Inject
+	private GestionLibroON gestion;
 	
 	@PostConstruct
 	public void init() {
@@ -78,7 +83,16 @@ public class LibrosMB {
 		this.compra = compra;
 	}
 	
+	public String crearLibro() {
+		gestion.crearLibro(libro);
+		return null;
+	}
 	
+	public String crearCategoria() {
+		System.out.println("MAB "+categoria.toString());
+		gestion.crearCategoria(categoria);
+		return null;
+	}
 	
 	
 }

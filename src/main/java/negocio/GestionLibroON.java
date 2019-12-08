@@ -1,6 +1,8 @@
 package negocio;
 
 import javax.ejb.Stateless;
+import javax.inject.Inject;
+import javax.persistence.EntityManager;
 
 import dao.AutorDao;
 import dao.CategoriaDao;
@@ -24,6 +26,9 @@ public class GestionLibroON {
 	private CompraDao comDao = new CompraDao();
 	private UsuarioDao usuDao = new UsuarioDao();
 	private VotoDao votDao = new VotoDao();
+	
+	@Inject
+	private EntityManager em;
 	
 	/*CRUD LIBROS*/
 	public void crearLibro(Libro libro) {
@@ -61,19 +66,21 @@ public class GestionLibroON {
 	
 	/*CRUD CATEGORIAS*/
 	public void crearCategoria(Categoria categoria) {
-		catDao.crearCategoria(categoria);
+		System.out.println("DAO "+categoria.toString());
+		em.persist(categoria);
 	}
 	
 	public void actualizarCategoria(Categoria categoria) {
-		catDao.actualizarCategoria(categoria);
+		em.merge(categoria);
 	}
 	
 	public void eliminarCategoria(int id) {
-		catDao.eliminarCategoria(id);
+		em.remove(buscarCategoria(id));
 	}
 	
-	public void buscarCategoria(int id) {
-		catDao.buscarCategoria(id);
+	public Categoria buscarCategoria(int id) {
+		em.find(Categoria.class, id);
+		return null;
 	}
 	
 	/*CRUD COMPRAS*/

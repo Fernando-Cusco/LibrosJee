@@ -1,10 +1,16 @@
 package modelo;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -12,9 +18,10 @@ import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "compras")
-public class Compra {
+public class Compra implements Serializable{
 	
 	@Id
+	@GeneratedValue
 	private int id;
 	
 	@NotNull
@@ -24,11 +31,13 @@ public class Compra {
 	@NotNull	
 	private int cantidad;
 	
-	@NotNull
+	@OneToOne
 	private Usuario usuario;
 	
-	@NotNull
+	@OneToMany(cascade = {CascadeType.ALL})
+	@JoinColumn(name = "compra", referencedColumnName = "id")
 	private List<Libro> libro;
+	
 	public int getId() {
 		return id;
 	}
