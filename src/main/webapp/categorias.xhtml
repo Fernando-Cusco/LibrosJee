@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+   <title>	
+   	Categorias
+   </title>
+</h:head>
+<h:body>
+	<ui:composition template="menu.xhtml">
+		
+		<ui:define name="content">
+			<h1>Contenido para el Categorias</h1>
+			
+			<h:form>
+				<h:panelGrid columns="3">
+					<h:outputLabel value="Nombre:" for="nombre"/>
+					<h:inputText value="#{categoriaMB.categoria.nombre}" id="nombre"/>
+					<h:message for="nombre"/>
+				</h:panelGrid>
+				<h:commandButton action="#{categoriaMB.crearCategoria()}" value="Guardar" />
+			</h:form>
+			
+			<div>
+				<h:form>
+					<h:dataTable value="#{categoriaMB.categorias}" var="cat">
+					<h:column>
+						<f:facet name="header">Id</f:facet>
+						#{cat.id}
+					</h:column>
+					<h:column>
+						<f:facet name="header">Nombres</f:facet>
+						#{cat.nombre}
+					</h:column>
+					<h:column>
+						<f:facet name="header">Acciones</f:facet>
+						<h:commandLink action="#{categoriaMB.eliminar(cat.id)}" value="Eliminar"></h:commandLink>
+						&nbsp;
+						<h:commandLink action="#{categoriaMB.redirect()}" value="Actualizar">
+							<f:param name="id" value="#{cat.id}"></f:param>
+						</h:commandLink>
+					</h:column>
+				</h:dataTable>
+				</h:form>
+			</div>
+			
+			
+		</ui:define>	
+
+	</ui:composition>
+</h:body>
+	
+	
+</html>
+
