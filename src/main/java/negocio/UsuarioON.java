@@ -1,10 +1,13 @@
 package negocio;
 
+import java.util.List;
+
+import javax.ejb.Stateless;
 import javax.inject.Inject;
 
 import dao.UsuarioDao;
 import modelo.Usuario;
-
+@Stateless
 public class UsuarioON {
 
 	@Inject
@@ -23,7 +26,11 @@ public class UsuarioON {
 		usuDao.eliminarUsuario(id);
 	}
 	
-	public void buscarUsuario(int id) {
-		usuDao.buscarUsuario(id);
+	public Usuario buscarUsuario(int id) {
+		return usuDao.buscarUsuario(id);
+	}
+	
+	public List<Usuario> listaUsuarios() {
+		return usuDao.listarUsuarios();
 	}
 }

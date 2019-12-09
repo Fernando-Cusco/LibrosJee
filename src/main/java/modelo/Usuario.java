@@ -37,15 +37,19 @@ public class Usuario implements Serializable{
 	@Temporal(TemporalType.DATE)
 	private Date fechaNacimiento;
 	
-	@NotNull
+	
 	private String password;
 	
+	@NotNull
 	private boolean permisoCliente;
 	
 	private boolean permisoAdministrador;
 	
 	@NotNull
 	private String Preferencia;
+	
+	@NotNull
+	private boolean temporal;
 	
 	
 	public int getId() {
@@ -107,6 +111,12 @@ public class Usuario implements Serializable{
 	}
 	public void setPreferencia(String preferencia) {
 		Preferencia = preferencia;
+	}
+	public boolean isTemporal() {
+		return temporal;
+	}
+	public void setTemporal(boolean temporal) {
+		this.temporal = temporal;
 	}
 	@Override
 	public String toString() {

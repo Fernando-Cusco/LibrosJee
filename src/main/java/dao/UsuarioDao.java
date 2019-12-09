@@ -1,7 +1,10 @@
 package dao;
 
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 
 import modelo.Usuario;
 
@@ -24,5 +27,11 @@ public class UsuarioDao {
 	public Usuario buscarUsuario(int id) {
 		em.find(Usuario.class, id);
 		return null;
+	}
+	
+	public List<Usuario> listarUsuarios() {
+		String jpql= "select u from Usuario u";
+		Query query = em.createQuery(jpql, Usuario.class);
+		return query.getResultList();
 	}
 }

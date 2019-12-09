@@ -56,6 +56,56 @@
 				<h:commandButton action="#{librosMB.crearLibro()}" value="Guardar" />
 			</h:form>
 			
+			<div>
+				<h:form>
+					<h:dataTable value="#{librosMB.libros}" var="lib">
+						<h:column>
+							<f:facet name="header">Id</f:facet>
+							#{lib.id}
+						</h:column>
+						
+						<h:column>
+							<f:facet name="header">Titulos</f:facet>
+							#{lib.titulo}
+						</h:column>
+						
+						<h:column>
+							<f:facet name="header">Descripcion</f:facet>
+							#{lib.descripcion}
+						</h:column>
+						
+						<h:column>
+							<f:facet name="header">Portada</f:facet>
+							#{lib.portada}
+						</h:column>
+						
+						<h:column>
+							<f:facet name="header">Fecha publicacion</f:facet>
+							#{lib.fechaPublicacion}
+						</h:column>
+						
+						<h:column>
+							<f:facet name="header">Numero paginas</f:facet>
+							#{lib.paginas}
+						</h:column>
+						
+						<h:column>
+							<f:facet name="header">Precio</f:facet>
+							#{lib.precio}
+						</h:column>
+						
+						<h:column>
+						<f:facet name="header">Acciones</f:facet>
+						<h:commandLink action="#{librosMB.eliminar(lib.id)}" value="Eliminar"></h:commandLink>
+						&nbsp;
+						<h:commandLink action="#{librosMB.redirect()}" value="Actualizar">
+							<f:param name="id" value="#{cat.id}"></f:param>
+						</h:commandLink>
+					</h:column>
+						
+					</h:dataTable>
+				</h:form>
+			</div>
 			
 			
 		</ui:define>	

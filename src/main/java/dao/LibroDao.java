@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 
 import modelo.Libro;;
 
@@ -29,5 +30,10 @@ public class LibroDao {
 		return null;
 	}
 	
+	public List<Libro> listarLibros() {
+		String jpql = "select l from Libro l";
+		Query query = em.createQuery(jpql, Libro.class);
+		return query.getResultList();
+	}
 	
 }

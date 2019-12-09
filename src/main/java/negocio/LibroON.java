@@ -1,6 +1,8 @@
 package negocio;
 
 
+import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
@@ -30,6 +32,10 @@ public class LibroON {
 	
 	public void buscarLibro(int id) {
 		libDao.buscarLibro(id);
+	}
+	
+	public List<Libro> listarLibros() {
+		return libDao.listarLibros();
 	}
 	
 }
