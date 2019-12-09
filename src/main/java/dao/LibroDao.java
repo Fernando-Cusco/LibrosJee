@@ -1,5 +1,7 @@
 package dao;
 
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 
@@ -26,4 +28,6 @@ public class LibroDao {
 		em.find(Libro.class, id);
 		return null;
 	}
+	
+	
 }

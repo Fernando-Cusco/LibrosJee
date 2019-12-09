@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+   <title>	
+   	Buscar Categoria
+   </title>
+</h:head>
+<h:body>
+	<ui:composition template="menu.xhtml">
+		
+		<ui:define name="content">
+			
+			<h:form>
+				<h:panelGrid columns="3">
+					<h:outputLabel value="Id:" for="id"/>
+					<h:inputText value="#{actualizarMB.id}" id="id"/>
+					<h:commandButton action="#{actualizarMB.buscar(actualizarMB.id)}" value="Buscar" />
+				</h:panelGrid>
+
+			</h:form>
+			
+			<h:form>
+				<h:panelGrid columns="3">
+					<h:outputLabel value="Nombre:" for="nombre"/>
+					<h:inputText value="#{actualizarMB.categoriaUpdate.nombre}" id="nombre"/>
+				</h:panelGrid>
+				<h:commandButton action="#{actualizarMB.actualizar()}" value="Actualizar" />
+			</h:form>
+			
+			
+		
+		</ui:define>	
+
+	</ui:composition>
+</h:body>
+</html>
+		

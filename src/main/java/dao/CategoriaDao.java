@@ -1,9 +1,13 @@
 package dao;
 
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 
 import modelo.Categoria;;
+
 
 public class CategoriaDao {
 	@Inject
@@ -15,6 +19,7 @@ public class CategoriaDao {
 	}
 	
 	public void actualizarCategoria(Categoria categoria) {
+		System.out.println(categoria.toString()+" idss");
 		em.merge(categoria);
 	}
 	
@@ -23,7 +28,12 @@ public class CategoriaDao {
 	}
 	
 	public Categoria buscarCategoria(int id) {
-		em.find(Categoria.class, id);
-		return null;
+		return em.find(Categoria.class, id);
+	}
+	
+	public List<Categoria> listarCategorias() {
+		String jpql = "select c  from Categoria c";
+		Query query = em.createQuery(jpql, Categoria.class);
+		return query.getResultList();
 	}
 }

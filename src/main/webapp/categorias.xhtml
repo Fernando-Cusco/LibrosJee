@@ -17,16 +17,34 @@
 			<h:form>
 				<h:panelGrid columns="3">
 					<h:outputLabel value="Nombre:" for="nombre"/>
-					<h:inputText value="#{librosMB.categoria.nombre}" id="nombre"/>
+					<h:inputText value="#{categoriaMB.categoria.nombre}" id="nombre"/>
 					<h:message for="nombre"/>
 				</h:panelGrid>
-				<h:commandButton action="#{librosMB.crearCategoria()}" value="Guardar" />
+				<h:commandButton action="#{categoriaMB.crearCategoria()}" value="Guardar" />
 			</h:form>
 			
-			
-			
-			
-			
+			<div>
+				<h:form>
+					<h:dataTable value="#{categoriaMB.categorias}" var="cat">
+					<h:column>
+						<f:facet name="header">Id</f:facet>
+						#{cat.id}
+					</h:column>
+					<h:column>
+						<f:facet name="header">Nombres</f:facet>
+						#{cat.nombre}
+					</h:column>
+					<h:column>
+						<f:facet name="header">Acciones</f:facet>
+						<h:commandLink action="#{categoriaMB.eliminar(cat.id)}" value="Eliminar"></h:commandLink>
+						&nbsp;
+						<h:commandLink action="#{categoriaMB.redirect()}" value="Actualizar">
+							<f:param name="id" value="#{cat.id}"></f:param>
+						</h:commandLink>
+					</h:column>
+				</h:dataTable>
+				</h:form>
+			</div>
 			
 			
 		</ui:define>	
@@ -36,3 +54,4 @@
 	
 	
 </html>
+
