@@ -1,6 +1,6 @@
 package modelo;
 
-import java.io.Serializable;
+
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,7 +11,7 @@ import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "votos")
-public class Voto implements Serializable{
+public class Voto {
 	
 	@Id
 	@GeneratedValue
@@ -22,9 +22,9 @@ public class Voto implements Serializable{
 	
 	@OneToOne
 	private Usuario usuario;
-	
 	@OneToOne
 	private Libro libro;
+	
 	public int getId() {
 		return id;
 	}

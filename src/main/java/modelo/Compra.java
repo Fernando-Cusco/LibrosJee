@@ -1,10 +1,9 @@
 package modelo;
 
-import java.io.Serializable;
+
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -18,7 +17,7 @@ import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "compras")
-public class Compra implements Serializable{
+public class Compra {
 	
 	@Id
 	@GeneratedValue
@@ -28,15 +27,14 @@ public class Compra implements Serializable{
 	@Temporal(TemporalType.DATE)
 	private Date fecha;
 	
-	@NotNull	
-	private int cantidad;
 	
 	@OneToOne
 	private Usuario usuario;
 	
-	@OneToMany(cascade = {CascadeType.ALL})
+	@OneToMany
 	@JoinColumn(name = "compra", referencedColumnName = "id")
-	private List<Libro> libro;
+	private List<Detalle> detalles;
+	
 	
 	public int getId() {
 		return id;
@@ -50,30 +48,20 @@ public class Compra implements Serializable{
 	public void setFecha(Date fecha) {
 		this.fecha = fecha;
 	}
-	public int getCantidad() {
-		return cantidad;
-	}
-	public void setCantidad(int cantidad) {
-		this.cantidad = cantidad;
-	}
 	public Usuario getUsuario() {
 		return usuario;
 	}
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
+	public List<Detalle> getDetalles() {
+		return detalles;
+	}
+	public void setDetalles(List<Detalle> detalles) {
+		this.detalles = detalles;
+	}
 	
-	public List<Libro> getLibro() {
-		return libro;
-	}
-	public void setLibro(List<Libro> libro) {
-		this.libro = libro;
-	}
-	@Override
-	public String toString() {
-		return "Compra [id=" + id + ", fecha=" + fecha + ", cantidad=" + cantidad + ", usuario=" + usuario + ", libro="
-				+ libro + "]";
-	}
+	
 	
 	
 }

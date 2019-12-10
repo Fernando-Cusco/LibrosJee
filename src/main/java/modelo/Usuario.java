@@ -1,12 +1,16 @@
 package modelo;
 
-import java.io.Serializable;
-import java.util.Date;
 
+import java.util.Date;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -14,7 +18,7 @@ import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "usuarios")
-public class Usuario implements Serializable{
+public class Usuario {
 	
 	@Id
 	@GeneratedValue
@@ -26,9 +30,9 @@ public class Usuario implements Serializable{
 	
 	@NotNull
 	private String nombres;
-	
 	@NotNull
-	private String apellidos;
+	private String password;
+
 	
 	@NotNull
 	private String correo;
@@ -38,18 +42,21 @@ public class Usuario implements Serializable{
 	private Date fechaNacimiento;
 	
 	
-	private String password;
-	
-	@NotNull
-	private boolean permisoCliente;
-	
 	private boolean permisoAdministrador;
 	
 	@NotNull
-	private String Preferencia;
+	private String telefono;
 	
 	@NotNull
 	private boolean temporal;
+	
+	@OneToMany(cascade = {CascadeType.ALL})
+	@JoinColumn(name = "usuario", referencedColumnName = "id")
+	private List<Voto> votos;
+	
+	@OneToMany(cascade = {CascadeType.ALL})
+	@JoinColumn(name = "usuario", referencedColumnName = "id")
+	private List<Direccion> direcciones;
 	
 	
 	public int getId() {
@@ -70,12 +77,7 @@ public class Usuario implements Serializable{
 	public void setNombres(String nombres) {
 		this.nombres = nombres;
 	}
-	public String getApellidos() {
-		return apellidos;
-	}
-	public void setApellidos(String apellidos) {
-		this.apellidos = apellidos;
-	}
+	
 	public String getCorreo() {
 		return correo;
 	}
@@ -94,36 +96,38 @@ public class Usuario implements Serializable{
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public boolean isPermisoCliente() {
-		return permisoCliente;
-	}
-	public void setPermisoCliente(boolean permisoCliente) {
-		this.permisoCliente = permisoCliente;
-	}
+	
 	public boolean isPermisoAdministrador() {
 		return permisoAdministrador;
 	}
 	public void setPermisoAdministrador(boolean permisoAdministrador) {
 		this.permisoAdministrador = permisoAdministrador;
 	}
-	public String getPreferencia() {
-		return Preferencia;
-	}
-	public void setPreferencia(String preferencia) {
-		Preferencia = preferencia;
-	}
+	
 	public boolean isTemporal() {
 		return temporal;
 	}
 	public void setTemporal(boolean temporal) {
 		this.temporal = temporal;
 	}
-	@Override
-	public String toString() {
-		return "Usuario [id=" + id + ", cedula=" + cedula + ", nombres=" + nombres + ", apellidos=" + apellidos
-				+ ", correo=" + correo + ", fechaNacimiento=" + fechaNacimiento + ", password=" + password
-				+ ", permisoCliente=" + permisoCliente + ", permisoAdministrador=" + permisoAdministrador
-				+ ", Preferencia=" + Preferencia + "]";
+	public String getTelefono() {
+		return telefono;
 	}
+	public void setTelefono(String telefono) {
+		this.telefono = telefono;
+	}
+	public List<Voto> getVotos() {
+		return votos;
+	}
+	public void setVotos(List<Voto> votos) {
+		this.votos = votos;
+	}
+	public List<Direccion> getDirecciones() {
+		return direcciones;
+	}
+	public void setDirecciones(List<Direccion> direcciones) {
+		this.direcciones = direcciones;
+	}
+	
 	
 }

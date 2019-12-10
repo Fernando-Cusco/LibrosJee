@@ -1,6 +1,6 @@
 package modelo;
 
-import java.io.Serializable;
+
 import java.util.Date;
 import java.util.List;
 
@@ -18,7 +18,7 @@ import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "libros")
-public class Libro implements Serializable{
+public class Libro{
 	
 	@Id
 	@GeneratedValue
@@ -43,9 +43,22 @@ public class Libro implements Serializable{
 	@NotNull
 	private Double precio;
 	
+	@NotNull
+	private int stock;
+	
 	@OneToMany(cascade = {CascadeType.ALL})
 	@JoinColumn(name = "libro", referencedColumnName = "id")
 	private List<Categoria> categoria;
+	
+	@OneToMany(cascade = {CascadeType.ALL})
+	@JoinColumn(name = "libro", referencedColumnName = "id")
+	private List<AutorLibro> autores;
+	
+	
+	@OneToMany(cascade = {CascadeType.ALL})
+	@JoinColumn(name = "libro", referencedColumnName = "id")
+	private List<Voto> votos;
+	
 	public int getId() {
 		return id;
 	}
@@ -95,13 +108,24 @@ public class Libro implements Serializable{
 	public void setCategoria(List<Categoria> categoria) {
 		this.categoria = categoria;
 	}
-	@Override
-	public String toString() {
-		return "Libro [id=" + id + ", descripcion=" + descripcion + ", titulo=" + titulo + ", portada=" + portada
-				+ ", fechaPublicacion=" + fechaPublicacion + ", paginas=" + paginas + ", precio=" + precio
-				+ ", categoria=" + categoria + "]";
+	public int getStock() {
+		return stock;
+	}
+	public void setStock(int stock) {
+		this.stock = stock;
+	}
+	public List<AutorLibro> getAutores() {
+		return autores;
+	}
+	public void setAutores(List<AutorLibro> autores) {
+		this.autores = autores;
+	}
+	public List<Voto> getVotos() {
+		return votos;
+	}
+	public void setVotos(List<Voto> votos) {
+		this.votos = votos;
 	}
 	
 	
-
 }
