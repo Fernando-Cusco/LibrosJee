@@ -13,6 +13,28 @@
 		
 		<ui:define name="content">
 			<h1>Contenido para el Autores</h1>
+			<h:form>
+				<h:panelGrid columns="3">
+					<h:outputLabel value="Nombres:" for="nombres"/>
+					<h:inputText value="#{autorMB.autor.nombres}" id="nombres"/>
+					<h:message for="nombres"/>
+				</h:panelGrid>
+				
+				<h:panelGrid columns="3">
+					<h:outputLabel value="Nacionalidad:" for="nacionalidad"/>
+					<h:inputText value="#{autorMB.autor.nacionalidad}" id="nacionalidad"/>
+					<h:message for="nacionalidad"/>
+				</h:panelGrid>
+				
+				<h:panelGrid columns="3">
+					<h:outputLabel value="Numero Publicaciones:" for="publicaciones"/>
+					<h:inputText value="#{autorMB.autor.numeroPublicacion}" id="publicaciones"/>
+					<h:message for="publicaciones"/>
+				</h:panelGrid>
+				
+				<h:commandButton action="#{autorMB.crear()}" value="Crear" />
+				
+			</h:form>
 		</ui:define>	
 
 	</ui:composition>

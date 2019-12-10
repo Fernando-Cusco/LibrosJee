@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -46,16 +47,16 @@ public class Libro{
 	@NotNull
 	private int stock;
 	
-	@OneToMany(cascade = {CascadeType.ALL})
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name = "libro", referencedColumnName = "id")
 	private List<Categoria> categoria;
 	
-	@OneToMany(cascade = {CascadeType.ALL})
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name = "libro", referencedColumnName = "id")
 	private List<AutorLibro> autores;
 	
 	
-	@OneToMany(cascade = {CascadeType.ALL})
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name = "libro", referencedColumnName = "id")
 	private List<Voto> votos;
 	

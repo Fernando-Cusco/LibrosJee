@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -34,7 +35,7 @@ public class Autor{
 	private int numeroPublicacion;
 	
 	
-	@OneToMany(cascade = {CascadeType.ALL})
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name = "autor", referencedColumnName = "id")
 	private List<AutorLibro> libros;
 
