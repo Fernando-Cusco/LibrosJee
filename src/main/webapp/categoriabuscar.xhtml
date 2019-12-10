@@ -16,16 +16,13 @@
 			<h:form>
 				<h:panelGrid columns="3">
 					<h:outputLabel value="Id:" for="id"/>
-					<h:inputText value="#{actualizarMB.id}" id="id"/>
-					<h:commandButton action="#{actualizarMB.buscar(actualizarMB.id)}" value="Buscar" />
+					<h:inputText value="#{actualizarMB.categoria.id}" id="id"/>
 				</h:panelGrid>
 
-			</h:form>
 			
-			<h:form>
 				<h:panelGrid columns="3">
 					<h:outputLabel value="Nombre:" for="nombre"/>
-					<h:inputText value="#{actualizarMB.categoriaUpdate.nombre}" id="nombre"/>
+					<h:inputText value="#{actualizarMB.categoria.nombre}" id="nombre"/>
 				</h:panelGrid>
 				<h:commandButton action="#{actualizarMB.actualizar()}" value="Actualizar" />
 			</h:form>

@@ -29,6 +29,7 @@ public class CategoriaMB {
 	
 	public String crearCategoria() {
 		gestion.crearCategoria(categoria);
+		System.out.println( "objeto insertado "+categoria);
 		categoria = null;
 		listar();
 		return null;

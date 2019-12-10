@@ -14,26 +14,26 @@ public class ActualizarMB {
 	private int id;
 	
 	
-	
-	private Categoria categoriaUpdate;
+	private Categoria categoria;
 	
 	@Inject
 	private CategoriaON gestion;
 	
 	@PostConstruct
 	public void init() {
-		categoriaUpdate = new Categoria();
-		buscar(id);
+		categoria = new Categoria();
+		buscar();
 	}
-	public String buscar(int id) {
-		categoriaUpdate = gestion.buscarCategoria(id);
+	public String buscar() {
+		categoria = gestion.buscarCategoria(this.id);
 		return null;
 	}
 	public String actualizar() {
-		System.out.println("ID "+id);
-		Categoria c = gestion.buscarCategoria(id);
-		if(c != null) {
-			gestion.actualizarCategoria(c);
+		//Categoria
+		categoria = gestion.buscarCategoria(this.id);
+		System.out.println(this.id);
+		if(categoria != null) {
+			gestion.actualizarCategoria(categoria);
 		}
 		return "categorias";
 	}
@@ -48,14 +48,12 @@ public class ActualizarMB {
 	public void setId(int id) {
 		this.id = id;
 	}
-
-	public Categoria getCategoriaUpdate() {
-		return categoriaUpdate;
+	public Categoria getCategoria() {
+		return categoria;
+	}
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
 	}
 
-	public void setCategoriaUpdate(Categoria categoriaUpdate) {
-		this.categoriaUpdate = categoriaUpdate;
-	}
-	
 	
 }

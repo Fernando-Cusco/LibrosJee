@@ -39,6 +39,16 @@ public class LibrosMB {
 		libros = gestion.listarLibros();
 	}
 	
+	public String eliminar(int id) {
+		gestion.eliminarLibro(id);
+		listar();
+		return null;
+	}
+	
+	public String redirect() {
+		return "";
+	}
+	
 
 	public List<Libro> getLibros() {
 		return libros;

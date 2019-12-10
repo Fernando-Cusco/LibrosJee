@@ -26,8 +26,7 @@ public class LibroDao {
 	}
 	
 	public Libro buscarLibro(int id) {
-		em.find(Libro.class, id);
-		return null;
+		return em.find(Libro.class, id);
 	}
 	
 	public List<Libro> listarLibros() {
