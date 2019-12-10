@@ -4,11 +4,14 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html">
 <h:head>
-   <title>	
-   	Buscar Categoria
-   </title>
+   <f:metadata>
+   	<f:viewParam id="id" name="id" value="#{categoriaMB.id}"/>
+   	<f:viewAction action="#{categoriaMB.buscar}"/>
+   	
+   	
+   </f:metadata>
 </h:head>
-<h:body>
+<body>
 	<ui:composition template="menu.xhtml">
 		
 		<ui:define name="content">
@@ -16,15 +19,15 @@
 			<h:form>
 				<h:panelGrid columns="3">
 					<h:outputLabel value="Id:" for="id"/>
-					<h:inputText value="#{actualizarMB.categoria.id}" id="id"/>
+					<h:inputText value="#{categoriaMB.categoria.id}" id="id"/>
 				</h:panelGrid>
 
 			
 				<h:panelGrid columns="3">
 					<h:outputLabel value="Nombre:" for="nombre"/>
-					<h:inputText value="#{actualizarMB.categoria.nombre}" id="nombre"/>
+					<h:inputText value="#{categoriaMB.categoria.nombre}" id="nombre"/>
 				</h:panelGrid>
-				<h:commandButton action="#{actualizarMB.actualizar()}" value="Actualizar" />
+				<h:commandButton action="#{categoriaMB.actualizar()}" value="Actualizar" />
 			</h:form>
 			
 			
@@ -32,6 +35,6 @@
 		</ui:define>	
 
 	</ui:composition>
-</h:body>
+</body>
 </html>
 		

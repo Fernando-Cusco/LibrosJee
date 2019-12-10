@@ -12,7 +12,7 @@ import negocio.CategoriaON;
 @ManagedBean
 public class CategoriaMB {
 	
-	
+	private String id;
 	private Categoria categoria;
 	private List<Categoria> categorias;
 	
@@ -24,14 +24,15 @@ public class CategoriaMB {
 	public void init() {
 		categoria = new Categoria();
 		listar();
+		
 	}
 
 	
 	public String crearCategoria() {
 		gestion.crearCategoria(categoria);
-		System.out.println( "objeto insertado "+categoria);
 		categoria = null;
 		listar();
+		
 		return null;
 	}
 	
@@ -46,13 +47,37 @@ public class CategoriaMB {
 		return null;
 	}
 	
-	
-	public String redirect() {
-		return "categoriabuscar";
+	public void buscar() {
+		System.out.println("BUSCANDO "+id);
+		if( id != null) {
+			categoria = gestion.buscarCategoria(Integer.parseInt(id));
+		} else {
+			return;
+		}
 	}
 	
+	public String redirect(Categoria categoria) {
+		System.out.println("ID: "+id);
+		return "categoriabuscar?faces-redirect=true&id="+categoria.getId();
+	}
+	
+	public String actualizar() {
+		gestion.actualizarCategoria(categoria);
+		return "categorias?faces-redirect=true";
+	}
+
 	
 	
+	
+
+	public String getId() {
+		return id;
+	}
+
+
+	public void setId(String id) {
+		this.id = id;
+	}
 
 
 	public Categoria getCategoria() {

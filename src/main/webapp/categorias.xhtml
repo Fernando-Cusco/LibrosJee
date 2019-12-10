@@ -7,6 +7,7 @@
    <title>	
    	Categorias
    </title>
+   
 </h:head>
 <h:body>
 	<ui:composition template="menu.xhtml">
@@ -36,11 +37,9 @@
 					</h:column>
 					<h:column>
 						<f:facet name="header">Acciones</f:facet>
-						<h:commandLink action="#{categoriaMB.eliminar(cat.id)}" value="Eliminar"></h:commandLink>
+						<h:commandLink action="#{categoriaMB.eliminar(cat.id)}" value="Eliminar"/>
 						&nbsp;
-						<h:commandLink action="#{categoriaMB.redirect()}" value="Actualizar">
-							<f:param name="id" value="#{cat.id}"></f:param>
-						</h:commandLink>
+						<h:commandLink action="#{categoriaMB.redirect(cat)}" value="Actualizar"/>
 					</h:column>
 				</h:dataTable>
 				</h:form>
