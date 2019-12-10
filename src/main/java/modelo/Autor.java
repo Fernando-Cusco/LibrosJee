@@ -15,7 +15,6 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
-@Table(name = "autores")
 public class Autor{
 	
 	@Id
@@ -36,7 +35,7 @@ public class Autor{
 	
 	
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinColumn(name = "autor", referencedColumnName = "id")
+	@JoinColumn(name = "autor_id")
 	private List<AutorLibro> libros;
 
 	public int getId() {

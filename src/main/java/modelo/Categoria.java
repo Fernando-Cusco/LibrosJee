@@ -2,21 +2,16 @@ package modelo;
 
 
 
-import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
-@Table(name = "categorias")
 public class Categoria{
 	
 	@Id
@@ -27,9 +22,9 @@ public class Categoria{
 	@Size(min = 5, max = 15)
 	private String nombre;
 	
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinColumn(name = "libro", referencedColumnName = "id")
-	private List<Libro> libros;
+	@OneToOne
+	@JoinColumn(name = "categiria_id")
+	private Libro libro;
 	
 	public int getId() {
 		return id;

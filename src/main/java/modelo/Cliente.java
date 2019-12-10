@@ -1,6 +1,7 @@
 package modelo;
 
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -12,30 +13,36 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
-import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.Email;
 
 @Entity
-@Table(name = "usuarios")
-public class Usuario {
+
+public class Cliente {
 	
 	@Id
 	@GeneratedValue
 	private int id;
 	
 	@NotNull
+	@Size(min = 10, max = 10)
 	@Column(length = 10)
 	private String cedula;
 	
 	@NotNull
+	@Size(min = 3, max = 20)
 	private String nombres;
 	@NotNull
+	@Size(min = 7, max = 20)
 	private String password;
 
 	
 	@NotNull
+	@Email
 	private String correo;
 	
 	@NotNull
@@ -45,18 +52,17 @@ public class Usuario {
 	
 	private boolean permisoAdministrador;
 	
-	@NotNull
 	private String telefono;
 	
-	@NotNull
+	
 	private boolean temporal;
 	
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinColumn(name = "usuario", referencedColumnName = "id")
+	@JoinColumn(name = "voto_id")
 	private List<Voto> votos;
 	
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinColumn(name = "usuario", referencedColumnName = "id")
+	@JoinColumn(name = "direcciones_id")
 	private List<Direccion> direcciones;
 	
 	
@@ -128,6 +134,13 @@ public class Usuario {
 	}
 	public void setDirecciones(List<Direccion> direcciones) {
 		this.direcciones = direcciones;
+	}
+	
+	public void agregarDireccion(Direccion direccion) {
+		if(direcciones == null) {
+			direcciones = new ArrayList<Direccion>();
+		}
+		this.direcciones.add(direccion);
 	}
 	
 	

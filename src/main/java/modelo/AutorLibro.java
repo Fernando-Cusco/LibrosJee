@@ -4,6 +4,7 @@ package modelo;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 
@@ -15,9 +16,11 @@ public class AutorLibro {
 	int id;
 	@NotNull
 	@OneToOne
+	@JoinColumn(name = "autor_id")
 	private Autor autor;
 	@NotNull
 	@OneToOne
+	@JoinColumn(name = "libro_id")
 	private Libro libro;
 	public int getId() {
 		return id;

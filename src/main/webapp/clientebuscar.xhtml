@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+	<f:metadata>
+		<f:viewParam id="id" name="id" value="#{clienteMB.id}" />
+		<f:viewAction action="#{clienteMB.buscar}" />
+
+
+	</f:metadata>
+</h:head>
+
+<ui:composition template="menu.xhtml">
+	<ui:define name="content">
+		<h:form>
+
+			<h:panelGrid columns="3">
+				<h:outputLabel value="Id:" for="id" />
+				<h:inputText value="#{clienteMB.usuario.id}" id="id" />
+				<h:message for="id" />
+			</h:panelGrid>
+
+			<h:panelGrid columns="3">
+				<h:outputLabel value="Cedula:" for="cedula" />
+				<h:inputText value="#{clienteMB.usuario.cedula}" id="cedula" />
+				<h:message for="cedula" />
+			</h:panelGrid>
+
+			<h:panelGrid columns="3">
+				<h:outputLabel value="Nombres:" for="nombres" />
+				<h:inputText value="#{clienteMB.usuario.nombres}" id="nombres" />
+				<h:message for="nombres" />
+			</h:panelGrid>
+
+			<h:panelGrid columns="3">
+				<h:outputLabel value="Fecha Nacimiento:" for="fecha" />
+				<h:inputText value="#{clienteMB.usuario.fechaNacimiento}" id="fecha">
+					<f:convertDateTime pattern="dd/MM/yyyy" />
+				</h:inputText>
+				<h:message for="fecha" />
+			</h:panelGrid>
+
+
+			<h:panelGrid columns="3">
+				<h:outputLabel value="Correo:" for="correo" />
+				<h:inputText value="#{clienteMB.usuario.correo}" id="correo" />
+				<h:message for="correo" />
+			</h:panelGrid>
+
+			<h:panelGrid columns="3">
+				<h:outputLabel value="Password:" for="password" />
+				<h:inputText value="#{clienteMB.usuario.password}" id="password" />
+				<h:message for="password" />
+			</h:panelGrid>
+
+
+
+			<h:panelGrid columns="3">
+				<h:outputLabel value="Telefono:" for="telefono" />
+				<h:inputText value="#{clienteMB.usuario.telefono}" id="telefono" />
+				<h:message for="telefono" />
+			</h:panelGrid>
+
+			<h:panelGrid columns="3">
+				<h:outputLabel value="Es administrador:" for="admin" />
+				<h:selectBooleanCheckbox
+					value="#{clienteMB.usuario.permisoAdministrador}" id="admin" />
+				<h:message for="admin" />
+			</h:panelGrid>
+
+
+			<h:panelGrid columns="3">
+				<h:outputLabel value="Temporal:" for="temporal" />
+				<h:selectBooleanCheckbox value="#{clienteMB.usuario.temporal}"
+					id="temporal" />
+				<h:message for="temporal" />
+			</h:panelGrid>
+			<h:commandButton action="#{clienteMB.actualizar()}"
+				value="Actualizar" />
+		</h:form>
+
+
+		
+
+
+
+
+
+
+	</ui:define>
+</ui:composition>
+</html>

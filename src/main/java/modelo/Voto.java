@@ -5,12 +5,12 @@ package modelo;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name = "votos")
 public class Voto {
 	
 	@Id
@@ -21,8 +21,10 @@ public class Voto {
 	private int likes;
 	
 	@OneToOne
-	private Usuario usuario;
+	@JoinColumn(name = "voto_id")
+	private Cliente usuario;
 	@OneToOne
+	@JoinColumn(name = "libro_id")
 	private Libro libro;
 	
 	public int getId() {
@@ -37,10 +39,10 @@ public class Voto {
 	public void setLikes(int likes) {
 		this.likes = likes;
 	}
-	public Usuario getUsuario() {
+	public Cliente getUsuario() {
 		return usuario;
 	}
-	public void setUsuario(Usuario usuario) {
+	public void setUsuario(Cliente usuario) {
 		this.usuario = usuario;
 	}
 	public Libro getLibro() {

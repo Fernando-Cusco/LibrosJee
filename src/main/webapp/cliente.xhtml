@@ -1,0 +1,161 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+	<title>Usuarios</title>
+</h:head>
+<h:body>
+	<ui:composition template="menu.xhtml">
+
+		<ui:define name="content">
+			<h1>Contenido para el Usuarios</h1>
+
+			<h:form>
+				<h:panelGrid columns="3">
+					<h:outputLabel value="Cedula:" for="cedula" />
+					<h:inputText value="#{clienteMB.usuario.cedula}" id="cedula" />
+					<h:message for="cedula" />
+				</h:panelGrid>
+
+				<h:panelGrid columns="3">
+					<h:outputLabel value="Nombres:" for="nombres" />
+					<h:inputText value="#{clienteMB.usuario.nombres}" id="nombres" />
+					<h:message for="nombres" />
+				</h:panelGrid>
+
+				<h:panelGrid columns="3">
+					<h:outputLabel value="Fecha Nacimiento:" for="fecha" />
+					<h:inputText value="#{clienteMB.usuario.fechaNacimiento}"
+						id="fecha">
+						<f:convertDateTime pattern="dd/MM/yyyy" />
+					</h:inputText>
+					<h:message for="fecha" />
+				</h:panelGrid>
+
+
+				<h:panelGrid columns="3">
+					<h:outputLabel value="Correo:" for="correo" />
+					<h:inputText value="#{clienteMB.usuario.correo}" id="correo" />
+					<h:message for="correo" />
+				</h:panelGrid>
+
+
+
+				<h:panelGrid columns="3">
+					<h:outputLabel value="Password:" for="password" />
+					<h:inputSecret value="#{clienteMB.usuario.password}" id="password" />
+					<h:message for="password" />
+				</h:panelGrid>
+
+				<h:panelGrid columns="3">
+					<h:outputLabel value="Telefono:" for="telefono" />
+					<h:inputText value="#{clienteMB.usuario.telefono}" id="telefono" />
+					<h:message for="telefono" />
+				</h:panelGrid>
+
+				<h:panelGrid columns="3">
+					<h:outputLabel value="Es administrador:" for="admin" />
+					<h:selectBooleanCheckbox
+						value="#{clienteMB.usuario.permisoAdministrador}" id="admin" />
+					<h:message for="admin" />
+				</h:panelGrid>
+
+
+				<h:panelGrid columns="3">
+					<h:outputLabel value="Temporal:" for="temporal" />
+					<h:selectBooleanCheckbox value="#{clienteMB.usuario.temporal}"
+						id="temporal" />
+					<h:message for="temporal" />
+				</h:panelGrid>
+				
+
+
+				<div>
+					<div>
+						<h3>Agregar direccion</h3>
+
+
+						<h:dataTable value="#{clienteMB.usuario.direcciones}" var="dir">
+							<h:column>
+								<f:facet name="header">Ciudad</f:facet>
+								<h:inputText value="#{dir.ciudad}" />
+							</h:column>
+
+							<h:column>
+								<f:facet name="header">Calles</f:facet>
+								<h:inputText value="#{dir.calles}" />
+							</h:column>
+						</h:dataTable>
+						<h:commandButton action="#{clienteMB.agregarDirecciones()}"
+							value="Agregar direccion" />
+						
+						<h:commandButton action="#{clienteMB.crearUsuario()}" value="Crear" />
+					</div>
+				</div>
+
+
+
+			</h:form>
+
+			<div>
+				<h:form>
+					<h:dataTable value="#{clienteMB.usuarios}" var="usu">
+						<h:column>
+							<f:facet name="header">Id</f:facet>
+							#{usu.id}
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">Nombres</f:facet>
+							#{usu.nombres}
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">Telefono</f:facet>
+							#{usu.telefono}
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">Cedula</f:facet>
+							#{usu.cedula}
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">Correo</f:facet>
+							#{usu.correo}
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">Fecha Nacimiento</f:facet>
+							#{usu.fechaNacimiento}
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">Administrador</f:facet>
+							#{usu.permisoAdministrador}
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">Acciones</f:facet>
+							<h:commandLink action="#{clienteMB.eliminar(usu.id)}"
+								value="Eliminar" />
+							&nbsp;
+							<h:commandLink action="#{clienteMB.redirect(usu)}"
+								value="Actualizar" />
+						</h:column>
+
+					</h:dataTable>
+				</h:form>
+			</div>
+
+
+
+		</ui:define>
+
+	</ui:composition>
+</h:body>
+
+
+</html>

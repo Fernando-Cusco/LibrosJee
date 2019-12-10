@@ -19,7 +19,6 @@ public class CategoriaDao {
 	}
 	
 	public void actualizarCategoria(Categoria categoria) {
-		System.out.println(categoria.toString()+" idss");
 		em.merge(categoria);
 	}
 	

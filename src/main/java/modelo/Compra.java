@@ -18,7 +18,6 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name = "compras")
 public class Compra {
 	
 	@Id
@@ -31,10 +30,10 @@ public class Compra {
 	
 	
 	@OneToOne
-	private Usuario usuario;
+	private Cliente usuario;
 	
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinColumn(name = "compra", referencedColumnName = "id")
+	@JoinColumn(name = "detalle_id")
 	private List<Detalle> detalles;
 	
 	
@@ -50,10 +49,10 @@ public class Compra {
 	public void setFecha(Date fecha) {
 		this.fecha = fecha;
 	}
-	public Usuario getUsuario() {
+	public Cliente getUsuario() {
 		return usuario;
 	}
-	public void setUsuario(Usuario usuario) {
+	public void setUsuario(Cliente usuario) {
 		this.usuario = usuario;
 	}
 	public List<Detalle> getDetalles() {

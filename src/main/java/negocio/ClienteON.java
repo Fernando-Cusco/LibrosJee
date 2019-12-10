@@ -5,20 +5,20 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
-import dao.UsuarioDao;
-import modelo.Usuario;
+import dao.ClienteDao;
+import modelo.Cliente;
 @Stateless
-public class UsuarioON {
+public class ClienteON {
 
 	@Inject
-	private UsuarioDao usuDao;
+	private ClienteDao usuDao;
 	
 	/*CRUD USUARIOS*/
-	public void crearUsuario(Usuario usuario) {
+	public void crearUsuario(Cliente usuario) {
 		usuDao.crearUsuario(usuario);
 	}
 	
-	public void actualizarUsuario(Usuario usuario) {
+	public void actualizarUsuario(Cliente usuario) {
 		usuDao.actualizarUsuario(usuario);
 	}
 	
@@ -26,11 +26,11 @@ public class UsuarioON {
 		usuDao.eliminarUsuario(id);
 	}
 	
-	public Usuario buscarUsuario(int id) {
+	public Cliente buscarUsuario(int id) {
 		return usuDao.buscarUsuario(id);
 	}
 	
-	public List<Usuario> listaUsuarios() {
+	public List<Cliente> listaUsuarios() {
 		return usuDao.listarUsuarios();
 	}
 }

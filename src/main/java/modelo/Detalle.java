@@ -3,12 +3,12 @@ package modelo;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name = "detalles")
 public class Detalle {
 	
 	@Id
@@ -17,9 +17,14 @@ public class Detalle {
 	@NotNull
 	private int cantidad;
 	
+	
 	@OneToOne
+	@JoinColumn(name = "detalle_id")
 	private Libro libro;
 	
+	@OneToOne
+	@JoinColumn(name = "detalle_id")
+	private Compra compra;
 	
 	public int getId() {
 		return id;
