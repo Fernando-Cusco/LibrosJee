@@ -7,7 +7,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 import modelo.Cliente;
-import modelo.Direccion;
 
 public class ClienteDao {
 	@Inject

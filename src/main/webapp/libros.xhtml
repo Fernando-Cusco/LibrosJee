@@ -60,18 +60,22 @@
 				</h:panelGrid>
 				
 				
+				
+				
 				<div>
-					<h3>Agregar Categoria</h3>
-					<h:dataTable value="#{librosMB.libro.categorias}" var="lib">
+					<h3>Agregar Autor</h3>
+					<h:dataTable value="#{librosMB.libro.autoresLibros}" var="autlib">
 						<h:column>
 							<f:facet name="header">Nombre</f:facet>
-							<h:inputText value="#{lib.nombre}" />
+							<h:inputText value="#{autlib.temp}" id="autor">
+								<f:ajax render="autorlb" execute="autor" listener="#{librosMB.buscarAutor(autlib)}"></f:ajax>
+							</h:inputText>
+							<h:outputText id="autorlb" value="#{tipolibro.autor.nombre}" />
+							<h:message for="txtAutor"/>
 						</h:column>
 					</h:dataTable>
-					<h:commandButton action="#{librosMB.agregarCategoria()}" value="Agregar Categoria" />
+					<h:commandButton action="#{librosMB.agregarAutorLibro()}" value="Agregar Autor" />
 				</div>
-				
-				
 				
 				
 				<h:commandButton action="#{librosMB.crearLibro()}" value="Guardar" />

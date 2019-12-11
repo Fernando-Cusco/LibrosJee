@@ -6,24 +6,34 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
 
+import modelo.Autor;
+import modelo.AutorLibro;
 import modelo.Categoria;
 import modelo.Libro;
+import negocio.AutorON;
 import negocio.LibroON;
 
 @ManagedBean
+@ViewScoped
 public class LibrosMB {
 	
-	private Libro libro;
+	private Libro libro=new Libro();
 	private List<Libro> libros;
+	private List<Autor> listadoAutoresLibros;
 	
 	@Inject
 	private LibroON gestion;
 	
+	@Inject
+	private AutorON gestiona;
+	
 	@PostConstruct
 	public void init() {
-		libro = new Libro();
+		libros = gestion.getListadoLibrosAutor();
+		listadoAutoresLibros=gestion.getListadoAutorLibros();
 		listar();
 	}
 	
@@ -46,13 +56,29 @@ public class LibrosMB {
 		return null;
 	}
 	
+	public void agregarAutorLibro() {
+		libro.agregarLibroAutor(new AutorLibro());
+	}
+	
 	public String redirect() {
 		return "";
 	}
 	
-	public String agregarCategoria() {
-		
-		libro.agregarCategoria(new Categoria());
+//	public String agregarCategoria() {
+//		
+//		libro.agregarCategoria(new Categoria());
+//		return null;
+//	}
+	
+	
+	public String buscarAutor(AutorLibro al) {
+		System.out.println(al.getTemp()+" AUTORLIBRO");
+		try {
+			Autor at = gestiona.buscarAutor(al.getTemp());
+			al.setAutor(at);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		return null;
 	}
 	

@@ -24,10 +24,10 @@ public class Categoria{
 	@Size(min = 5, max = 15)
 	private String nombre;
 	
-	@OneToOne
-	@JoinColumn(name = "libros_id")
-	@JsonIgnore
-	private Libro libro;
+//	@OneToOne
+//	@JoinColumn(name = "libros_id")
+//	@JsonIgnore
+//	private Libro libro;
 	
 	public int getId() {
 		return id;
@@ -42,12 +42,12 @@ public class Categoria{
 		this.nombre = nombre;
 	}
 	
-	public Libro getLibro() {
-		return libro;
-	}
-	public void setLibro(Libro libro) {
-		this.libro = libro;
-	}
+//	public Libro getLibro() {
+//		return libro;
+//	}
+//	public void setLibro(Libro libro) {
+//		this.libro = libro;
+//	}
 	@Override
 	public String toString() {
 		return "Categoria [id=" + id + ", nombre=" + nombre + "]";

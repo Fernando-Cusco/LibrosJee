@@ -2,13 +2,14 @@ package dao;
 
 import java.util.List;
 
+import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 import modelo.Libro;;
 
-
+@Stateless
 public class LibroDao {
 	@Inject
 	private EntityManager em;
@@ -41,10 +42,33 @@ public class LibroDao {
 		String jpql = "select l from Libro l";
 		Query query = em.createQuery(jpql, Libro.class);
 		List<Libro> libroz = query.getResultList();
-		for(Libro l: libroz) {
-			l.getAutores().size();
-		}
+//		for(Libro l: libroz) {
+//			l.getAutores().size();
+//		}
 		return libroz;
+	}
+	
+	public List<Libro> getLibrosAutor(){
+		String jpql = "SELECT l FROM Libro l ";
+		
+		Query q = em.createQuery(jpql, Libro.class);
+		
+		List<Libro> libros = q.getResultList();
+		
+		return libros;
+	}
+	
+	public List<Libro> getLibrosTipo(){
+		String jpql = "SELECT l FROM Libro l ";
+		
+		Query q = em.createQuery(jpql, Libro.class);
+		
+		List<Libro> libros = q.getResultList();
+		for (Libro libro : libros) {
+		libro.getAutoresLibros().size();
+		}
+		
+		return libros;
 	}
 	
 }

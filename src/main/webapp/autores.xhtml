@@ -32,9 +32,88 @@
 					<h:message for="publicaciones"/>
 				</h:panelGrid>
 				
+				
+				
+				
+				
+				
 				<h:commandButton action="#{autorMB.crear()}" value="Crear" />
 				
+				
 			</h:form>
+			
+			
+			<div>
+				<h:form>
+					<h:dataTable value="#{autorMB.autores}" var="aut">
+						<h:column>
+							<f:facet name="header">Id</f:facet>
+							#{aut.id}
+						</h:column>
+						<h:column>
+							<f:facet name="header">Nombres</f:facet>
+							#{aut.nombres}
+						</h:column>
+						<h:column>
+							<f:facet name="header">Nacionalidad</f:facet>
+							#{aut.nacionalidad}
+						</h:column>
+						<h:column>
+							<f:facet name="header">Numero Puclicaciones</f:facet>
+							#{aut.numeroPublicacion}
+						</h:column>
+					</h:dataTable>
+					
+					
+					
+					<h:dataTable value="#{autorMB.autor.autoresLibros}" var="lib">
+					
+					<h:column>
+						<f:facet name="header">Titulo</f:facet>
+						<h:inputText value="#{lib.libro.titulo}" />
+					</h:column>
+					
+					<h:column>
+						<f:facet name="header">Descripcion:</f:facet>
+						<h:inputTextarea value="#{lib.libro.descripcion}" />
+					</h:column>
+					
+					
+					<h:column>
+						<f:facet name="header">Portada</f:facet>
+						<h:inputText value="#{lib.libro.portada}"/>
+					</h:column>
+					
+					
+					<h:column>
+						<f:facet name="header">Fecha de publicacion</f:facet>
+						<h:inputText value="#{lib.libro.fechaPublicacion}">
+							<f:convertDateTime pattern="dd/MM/yyyy"/>
+						</h:inputText>
+					</h:column>
+					
+					<h:column>
+						<f:facet name="header">Numero de paginas</f:facet>
+						<h:inputText value="#{lib.libro.paginas}"/>
+					</h:column>
+					
+					<h:column>
+						<f:facet name="header">Precio</f:facet>
+						<h:inputText value="#{lib.libro.precio}"/>
+					</h:column>
+					
+					<h:column>
+						<f:facet name="header">Stock</f:facet>
+						<h:inputText value="#{lib.libro.stock}"/>
+					</h:column>
+					
+				</h:dataTable>
+					
+					
+					
+				</h:form>
+			</div>
+			
 		</ui:define>	
 
 	</ui:composition>

@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -23,6 +24,7 @@ public class Libro{
 	
 	@Id
 	@GeneratedValue
+	@Column(name = "id")
 	private int id;
 	
 	@NotNull
@@ -47,18 +49,18 @@ public class Libro{
 	@NotNull
 	private int stock;
 	
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinColumn(name = "libros_id")
-	private List<Categoria> categorias;
-	
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinColumn(name = "autor_id")
-	private List<AutorLibro> autores;
+//	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+//	@JoinColumn(name = "libros_id")
+//	private List<Categoria> categorias;
 	
 	
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinColumn(name = "libro")
-	private List<Voto> votos;
+	@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
+	@JoinColumn(name = "libro_id")
+	private List<AutorLibro> autoresLibros;
+	
+//	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+//	@JoinColumn(name = "libro")
+//	private List<Voto> votos;
 	
 	
 	@OneToOne
@@ -108,39 +110,61 @@ public class Libro{
 		this.precio = precio;
 	}
 	
-	public List<Categoria> getCategorias() {
-		return categorias;
-	}
-	public void setCategorias(List<Categoria> categorias) {
-		this.categorias = categorias;
-	}
+//	public List<Categoria> getCategorias() {
+//		return categorias;
+//	}
+//	public void setCategorias(List<Categoria> categorias) {
+//		this.categorias = categorias;
+//	}
 	public int getStock() {
 		return stock;
 	}
 	public void setStock(int stock) {
 		this.stock = stock;
 	}
-	public List<AutorLibro> getAutores() {
-		return autores;
+//	
+//	public List<Voto> getVotos() {
+//		return votos;
+//	}
+//	public void setVotos(List<Voto> votos) {
+//		this.votos = votos;
+//	}
+	
+	public List<AutorLibro> getAutoresLibros() {
+		return autoresLibros;
 	}
-	public void setAutores(List<AutorLibro> autores) {
-		this.autores = autores;
+	public void setAutoresLibros(List<AutorLibro> autoresLibros) {
+		this.autoresLibros = autoresLibros;
 	}
-	public List<Voto> getVotos() {
-		return votos;
+	public Detalle getDetalle() {
+		return detalle;
 	}
-	public void setVotos(List<Voto> votos) {
-		this.votos = votos;
+	public void setDetalle(Detalle detalle) {
+		this.detalle = detalle;
 	}
 	
-	
-	public void agregarCategoria(Categoria categoria) {
-		System.out.println("CATEGORIA: "+categoria.toString());
-		if(categorias == null) {
-			categorias = new ArrayList<Categoria>();
+	public void agregarLibroAutor(AutorLibro al) {
+		if(this.autoresLibros == null) {
+			this.autoresLibros = new ArrayList<AutorLibro>();
 		}
-		this.categorias.add(categoria);
+		this.autoresLibros.add(al);
 	}
+	
+	public void addTipoLibro(AutorLibro tl) {
+		if(this.autoresLibros==null)
+			this.autoresLibros = new ArrayList<>();
+		this.autoresLibros.add(tl);
+		
+	}
+	
+//	
+//	public void agregarCategoria(Categoria categoria) {
+//		System.out.println("CATEGORIA: "+categoria.toString());
+//		if(categorias == null) {
+//			categorias = new ArrayList<Categoria>();
+//		}
+//		this.categorias.add(categoria);
+//	}
 	
 	
 }

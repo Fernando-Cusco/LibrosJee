@@ -1,5 +1,7 @@
 package negocio;
 
+import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
@@ -24,7 +26,11 @@ public class AutorON {
 		autDao.eliminarAutor(id);
 	}
 	
-	public void buscarAutor(int id) {
-		autDao.buscarAutor(id);
+	public Autor buscarAutor(int id) {
+		return autDao.buscarAutor(id);
+	}
+	
+	public List<Autor> listaAutores() {
+		return autDao.listarAutores();
 	}
 }

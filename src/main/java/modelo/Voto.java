@@ -23,9 +23,9 @@ public class Voto {
 	@OneToOne
 	@JoinColumn(name = "voto_id")
 	private Cliente usuario;
-	@OneToOne
-	@JoinColumn(name = "libro_id")
-	private Libro libro;
+//	@OneToOne
+//	@JoinColumn(name = "libro_id")
+//	private Libro libro;
 	
 	public int getId() {
 		return id;
@@ -45,16 +45,16 @@ public class Voto {
 	public void setUsuario(Cliente usuario) {
 		this.usuario = usuario;
 	}
-	public Libro getLibro() {
-		return libro;
-	}
-	public void setLibro(Libro libro) {
-		this.libro = libro;
-	}
-	@Override
-	public String toString() {
-		return "Voto [id=" + id + ", likes=" + likes + ", usuario=" + usuario + ", libro=" + libro + "]";
-	}
+//	public Libro getLibro() {
+//		return libro;
+//	}
+//	public void setLibro(Libro libro) {
+//		this.libro = libro;
+//	}
+//	@Override
+//	public String toString() {
+//		return "Voto [id=" + id + ", likes=" + likes + ", usuario=" + usuario + ", libro=" + libro + "]";
+//	}
 	
 	
 

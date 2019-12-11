@@ -6,7 +6,9 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
+import dao.AutorDao;
 import dao.LibroDao;
+import modelo.Autor;
 import modelo.Libro;
 
 
@@ -15,6 +17,8 @@ public class LibroON {
 	
 	@Inject
 	private LibroDao libDao;
+	@Inject
+	private AutorDao adao;
 	
 
 	/*CRUD LIBROS*/
@@ -38,6 +42,13 @@ public class LibroON {
 		return libDao.listarLibros();
 	}
 	
+	public List<Libro> getListadoLibrosAutor(){
+		return libDao.getLibrosAutor();
+	}
+
+		public List<Autor> getListadoAutorLibros(){
+			return adao.getAutoresLibros();
+		}
 }
 
 
