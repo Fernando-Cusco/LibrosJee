@@ -29,10 +29,22 @@ public class LibroDao {
 		return em.find(Libro.class, id);
 	}
 	
+	public Libro buscarLibros(int id) {
+		String jpql = "SELECT l FROM Libro l JOIN FETCH l where l.id = :codigo";
+		Query query = em.createQuery(jpql, Libro.class);
+		query.setParameter("codigo", id);
+		Libro libro = (Libro) query.getSingleResult();
+		return libro;
+	}
+	
 	public List<Libro> listarLibros() {
 		String jpql = "select l from Libro l";
 		Query query = em.createQuery(jpql, Libro.class);
-		return query.getResultList();
+		List<Libro> libroz = query.getResultList();
+		for(Libro l: libroz) {
+			l.getAutores().size();
+		}
+		return libroz;
 	}
 	
 }

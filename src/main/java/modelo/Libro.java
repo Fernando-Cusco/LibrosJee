@@ -1,6 +1,7 @@
 package modelo;
 
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -49,7 +50,7 @@ public class Libro{
 	
 	@OneToMany
 	@JoinColumn(name = "categiria_id")
-	private List<Categoria> categoria;
+	private List<Categoria> categorias;
 	
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name = "libro_id")
@@ -108,11 +109,11 @@ public class Libro{
 		this.precio = precio;
 	}
 	
-	public List<Categoria> getCategoria() {
-		return categoria;
+	public List<Categoria> getCategorias() {
+		return categorias;
 	}
-	public void setCategoria(List<Categoria> categoria) {
-		this.categoria = categoria;
+	public void setCategorias(List<Categoria> categorias) {
+		this.categorias = categorias;
 	}
 	public int getStock() {
 		return stock;
@@ -131,6 +132,13 @@ public class Libro{
 	}
 	public void setVotos(List<Voto> votos) {
 		this.votos = votos;
+	}
+	
+	public void agregarLibro(Categoria categoria) {
+		if(categorias == null) {
+			categorias = new ArrayList<Categoria>();
+		}
+		this.categorias.add(categoria);
 	}
 	
 	
