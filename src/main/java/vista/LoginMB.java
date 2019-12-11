@@ -27,7 +27,7 @@ public class LoginMB {
 	
 	public String login() {
 		mensaje = login.login(correo, password);
-		return "";
+		return "inicio";
 	}
 
 	public String getCorreo() {

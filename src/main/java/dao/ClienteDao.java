@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.Query;
 
 import modelo.Cliente;
@@ -54,15 +55,19 @@ public class ClienteDao {
 		Query query = em.createQuery(jpql, Cliente.class);
 		query.setParameter("correo", correo);
 		query.setParameter("password", password);
-		Cliente cliente = (Cliente) query.getSingleResult();
-		if(cliente != null) {
-			if(cliente.isPermisoAdministrador()) {
-				flag = "admin";
+		try {
+			Cliente cliente = (Cliente) query.getSingleResult();
+			if(cliente != null) {
+				if(cliente.isPermisoAdministrador()) {
+					flag = "admin";
+				} else {
+					flag = "cliente";
+				}
 			} else {
-				flag = "cliente";
+				flag = "Datos Incorrectos";
 			}
-		} else {
-			flag = "Datos Incorrectos";
+		} catch (NoResultException e) {
+			// TODO: handle exception
 		}
 		return flag;
 	}
