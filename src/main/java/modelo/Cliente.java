@@ -137,6 +137,7 @@ public class Cliente {
 	}
 	
 	public void agregarDireccion(Direccion direccion) {
+		System.out.println("DIRECCION: "+direccion.toString());
 		if(direcciones == null) {
 			direcciones = new ArrayList<Direccion>();
 		}

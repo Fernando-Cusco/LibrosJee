@@ -21,6 +21,11 @@
 					<h:inputText value="#{categoriaMB.categoria.nombre}" id="nombre"/>
 					<h:message for="nombre"/>
 				</h:panelGrid>
+				
+				
+				
+				
+				
 				<h:commandButton action="#{categoriaMB.crearCategoria()}" value="Guardar" />
 			</h:form>
 			
@@ -41,7 +46,9 @@
 						&nbsp;
 						<h:commandLink action="#{categoriaMB.redirect(cat)}" value="Actualizar"/>
 					</h:column>
-				</h:dataTable>
+					</h:dataTable>
+					
+					
 				</h:form>
 			</div>
 			

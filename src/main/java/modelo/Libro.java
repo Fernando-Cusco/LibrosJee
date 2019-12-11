@@ -13,7 +13,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
@@ -48,17 +47,17 @@ public class Libro{
 	@NotNull
 	private int stock;
 	
-	@OneToMany
-	@JoinColumn(name = "categiria_id")
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JoinColumn(name = "libros_id")
 	private List<Categoria> categorias;
 	
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinColumn(name = "libro_id")
+	@JoinColumn(name = "autor_id")
 	private List<AutorLibro> autores;
 	
 	
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinColumn(name = "libro", referencedColumnName = "id")
+	@JoinColumn(name = "libro")
 	private List<Voto> votos;
 	
 	
@@ -134,7 +133,9 @@ public class Libro{
 		this.votos = votos;
 	}
 	
-	public void agregarLibro(Categoria categoria) {
+	
+	public void agregarCategoria(Categoria categoria) {
+		System.out.println("CATEGORIA: "+categoria.toString());
 		if(categorias == null) {
 			categorias = new ArrayList<Categoria>();
 		}

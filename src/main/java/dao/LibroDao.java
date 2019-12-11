@@ -25,11 +25,11 @@ public class LibroDao {
 		em.remove(buscarLibro(id));
 	}
 	
-	public Libro buscarLibro(int id) {
+	public Libro buscarLibro1(int id) {
 		return em.find(Libro.class, id);
 	}
 	
-	public Libro buscarLibros(int id) {
+	public Libro buscarLibro(int id) {
 		String jpql = "SELECT l FROM Libro l JOIN FETCH l where l.id = :codigo";
 		Query query = em.createQuery(jpql, Libro.class);
 		query.setParameter("codigo", id);

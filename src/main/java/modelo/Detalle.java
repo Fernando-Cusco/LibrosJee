@@ -19,7 +19,7 @@ public class Detalle {
 	
 	
 	@OneToOne
-	@JoinColumn(name = "detalle_id")
+	@JoinColumn(name = "libro_id")
 	private Libro libro;
 	
 	@OneToOne

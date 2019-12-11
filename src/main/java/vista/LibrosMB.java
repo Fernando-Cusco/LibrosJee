@@ -8,6 +8,7 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.inject.Inject;
 
+import modelo.Categoria;
 import modelo.Libro;
 import negocio.LibroON;
 
@@ -47,6 +48,12 @@ public class LibrosMB {
 	
 	public String redirect() {
 		return "";
+	}
+	
+	public String agregarCategoria() {
+		
+		libro.agregarCategoria(new Categoria());
+		return null;
 	}
 	
 
