@@ -33,4 +33,8 @@ public class ClienteON {
 	public List<Cliente> listaUsuarios() {
 		return usuDao.listarUsuarios();
 	}
+	
+	public String login(String correo, String password) {
+		return usuDao.login(correo, password);
+	}
 }

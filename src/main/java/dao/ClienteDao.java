@@ -46,4 +46,25 @@ public class ClienteDao {
 		}
 		return clientez;
 	}
+	
+	
+	public String login(String correo, String password) {
+		String flag = "";
+		String jpql = "select c from Cliente c where c.correo = :correo and c.password = :password";
+		Query query = em.createQuery(jpql, Cliente.class);
+		query.setParameter("correo", correo);
+		query.setParameter("password", password);
+		Cliente cliente = (Cliente) query.getSingleResult();
+		if(cliente != null) {
+			if(cliente.isPermisoAdministrador()) {
+				flag = "admin";
+			} else {
+				flag = "cliente";
+			}
+		} else {
+			flag = "Datos Incorrectos";
+		}
+		return flag;
+	}
+	
 }

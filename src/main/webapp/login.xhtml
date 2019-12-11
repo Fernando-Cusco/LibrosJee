@@ -1,0 +1,23 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+	
+			<h2>Iniciar Sesion</h2>
+			<h:form>
+				<h:panelGrid columns="2">
+					<h:outputLabel value="Usuario o Correo" for="correo" />
+					<h:inputText value="#{loginMB.correo}" />
+				</h:panelGrid>
+				
+				<h:panelGrid columns="2">
+					<h:outputLabel value="Password" for="password" />
+					<h:inputSecret value="#{loginMB.password}" />
+				</h:panelGrid>
+				<h:commandButton action="#{loginMB.login()}" value="Ingresar" />
+				<h:outputLabel value="#{loginMB.mensaje}" />
+			</h:form>
+		
+</html>
