@@ -13,6 +13,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+/**
+ * 
+ * @author fernandocuscomejia
+ *
+ */
 
 @Entity
 public class Autor{
@@ -71,8 +76,6 @@ public class Autor{
 	}
 
 	
-	
-
 	public List<AutorLibro> getAutoresLibros() {
 		return autoresLibros;
 	}

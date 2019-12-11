@@ -8,6 +8,12 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+/**
+ * 
+ * @author fernandocuscomejia
+ *
+ */
+
 @Entity
 public class Detalle {
 	

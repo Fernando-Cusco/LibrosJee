@@ -11,8 +11,13 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
-@Entity
+/**
+ * 
+ * @author fernandocuscomejia
+ *
+ */
 
+@Entity
 public class Direccion {
 
 	@Id

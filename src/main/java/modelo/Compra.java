@@ -17,6 +17,12 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
+/**
+ * 
+ * @author fernandocuscomejia
+ *
+ */
+
 @Entity
 public class Compra {
 	

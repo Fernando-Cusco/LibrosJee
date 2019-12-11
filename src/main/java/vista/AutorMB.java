@@ -7,9 +7,13 @@ import javax.faces.bean.ManagedBean;
 import javax.inject.Inject;
 
 import modelo.Autor;
-import modelo.Libro;
 import negocio.AutorON;
 
+/**
+ * 
+ * @author fernandocuscomejia
+ *
+ */
 @ManagedBean
 public class AutorMB {
 	
@@ -20,16 +24,24 @@ public class AutorMB {
 	
 	private List<Autor> autores;
 	
+	
 	@PostConstruct
 	public void init() {
 		autor = new Autor();
 		listar();
 	}
-
+	
+	/**
+	 * llama al listar autores del On
+	 */
 	public void listar() {
 		autores = gestion.listaAutores();
 	}
 	
+	/**
+	 * 
+	 * @return, lama al listar crear del On
+	 */
 	public String crear() {
 		gestion.crearAutor(autor);
 		autor = null;

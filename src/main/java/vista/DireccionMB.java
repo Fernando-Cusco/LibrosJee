@@ -7,6 +7,11 @@ import javax.inject.Inject;
 import modelo.Direccion;
 import negocio.DireccionON;
 
+/**
+ * 
+ * @author fernandocuscomejia
+ *
+ */
 @ManagedBean
 public class DireccionMB {
 	
@@ -20,7 +25,10 @@ public class DireccionMB {
 		direccion = new Direccion();
 	}
 
-	
+	/**
+	 * 
+	 * @return, creamos una direccion
+	 */
 	public String crear() {
 		gestion.crearDireccion(direccion);
 		return null;

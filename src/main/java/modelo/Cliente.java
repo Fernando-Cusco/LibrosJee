@@ -20,8 +20,13 @@ import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Email;
 
-@Entity
+/**
+ * 
+ * @author fernandocuscomejia
+ *
+ */
 
+@Entity
 public class Cliente {
 	
 	@Id
@@ -136,6 +141,10 @@ public class Cliente {
 		this.direcciones = direcciones;
 	}
 	
+	/**
+	 * 
+	 * @param direccion, agrega una direccion al cliente
+	 */
 	public void agregarDireccion(Direccion direccion) {
 		System.out.println("DIRECCION: "+direccion.toString());
 		if(direcciones == null) {

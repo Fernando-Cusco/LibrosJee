@@ -9,27 +9,45 @@ import javax.persistence.Query;
 
 import modelo.Cliente;
 
+/**
+ * 
+ * @author fernandocuscomejia
+ *
+ */
 public class ClienteDao {
 	@Inject
 	private EntityManager em;
 	
+	/**
+	 * 
+	 * @param usuario, guarda un usuario sobre la db.
+	 */
 	public void crearUsuario(Cliente usuario) {
 		em.persist(usuario);
 	}
 	
+	/**
+	 * 
+	 * @param usuario, actualiza un cliente
+	 */
 	public void actualizarUsuario(Cliente usuario) {
 		em.merge(usuario);
 	}
 	
-	
+	/**
+	 * 
+	 * @param id, elimina un cliente por su id
+	 */
 	public void eliminarUsuario(int id) {
 		em.remove(buscarUsuario(id));
 	}
 	
-//	public Cliente buscarUsuario(int id) {
-//		return em.find(Cliente.class, id);
-//	}
-	
+
+	/**
+	 * 
+	 * @param id, busca un cliente por el id
+	 * @return, devuelve el cliente encontrado
+	 */
 	public Cliente buscarUsuario(int id) {
 		String jpql = "SELECT c FROM Cliente c JOIN FETCH c where c.id = :codigo";
 		Query query = em.createQuery(jpql, Cliente.class);
@@ -38,6 +56,10 @@ public class ClienteDao {
 		return cliente;
 	}
 	
+	/**
+	 * 
+	 * @return, devuelve la lista de clientes de la db.
+	 */
 	public List<Cliente> listarUsuarios() {
 		String jpql= "select u from Cliente u";
 		Query query = em.createQuery(jpql, Cliente.class);
@@ -48,7 +70,12 @@ public class ClienteDao {
 		return clientez;
 	}
 	
-	
+	/**
+	 * 
+	 * @param correo, parametros para el login de usuario
+	 * @param password
+	 * @return, devuelve el tipo de usuario que es.
+	 */
 	public String login(String correo, String password) {
 		String flag = "";
 		String jpql = "select c from Cliente c where c.correo = :correo and c.password = :password";

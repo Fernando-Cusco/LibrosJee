@@ -19,6 +19,12 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+/**
+ * 
+ * @author fernandocuscomejia
+ *
+ */
+
 @Entity
 public class Libro{
 	
@@ -143,6 +149,10 @@ public class Libro{
 		this.detalle = detalle;
 	}
 	
+	/**
+	 * 
+	 * @param al, agregamos un libroautor 
+	 */
 	public void agregarLibroAutor(AutorLibro al) {
 		if(this.autoresLibros == null) {
 			this.autoresLibros = new ArrayList<AutorLibro>();
@@ -150,6 +160,10 @@ public class Libro{
 		this.autoresLibros.add(al);
 	}
 	
+	/**
+	 * 
+	 * @param tl, agregamps un tipolibro 
+	 */
 	public void addTipoLibro(AutorLibro tl) {
 		if(this.autoresLibros==null)
 			this.autoresLibros = new ArrayList<>();

@@ -9,27 +9,55 @@ import javax.persistence.Query;
 
 import modelo.Libro;;
 
+/**
+ * 
+ * @author fernandocuscomejia
+ *
+ */
+
 @Stateless
 public class LibroDao {
 	@Inject
 	private EntityManager em;
 	
+	/**
+	 * 
+	 * @param libro, guarda un libro sobre la db.
+	 */
 	public void crearLibro(Libro libro) {
 		em.persist(libro);
 	}
 	
+	/**
+	 * 
+	 * @param libro, actualiza un libro
+	 */
 	public void actualizarLibro(Libro libro) {
 		em.merge(libro);
 	}
 	
+	/**
+	 * 
+	 * @param id, elimina un libro por su id
+	 */
 	public void eliminarLibro(int id) {
 		em.remove(buscarLibro(id));
 	}
 	
+	/**
+	 * 
+	 * @param id, busca un libro
+	 * @return, devuelve un libro
+	 */
 	public Libro buscarLibro1(int id) {
 		return em.find(Libro.class, id);
 	}
 	
+	/**
+	 * 
+	 * @param id, busca un libro por su id
+	 * @return, devuelve un libro encontrado
+	 */
 	public Libro buscarLibro(int id) {
 		String jpql = "SELECT l FROM Libro l JOIN FETCH l where l.id = :codigo";
 		Query query = em.createQuery(jpql, Libro.class);
@@ -38,6 +66,10 @@ public class LibroDao {
 		return libro;
 	}
 	
+	/**
+	 * 
+	 * @return, devuelve una lista de libros
+	 */
 	public List<Libro> listarLibros() {
 		String jpql = "select l from Libro l";
 		Query query = em.createQuery(jpql, Libro.class);
@@ -48,6 +80,10 @@ public class LibroDao {
 		return libroz;
 	}
 	
+	/**
+	 * 
+	 * @return, devolvemos una lista de librosautores
+	 */
 	public List<Libro> getLibrosAutor(){
 		String jpql = "SELECT l FROM Libro l ";
 		
@@ -58,6 +94,10 @@ public class LibroDao {
 		return libros;
 	}
 	
+	/**
+	 * 
+	 * @return, devuelve una lista de libros tipo
+	 */
 	public List<Libro> getLibrosTipo(){
 		String jpql = "SELECT l FROM Libro l ";
 		

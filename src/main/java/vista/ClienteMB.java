@@ -13,6 +13,11 @@ import modelo.Direccion;
 import negocio.ClienteON;
 import negocio.DireccionON;
 
+/**
+ * 
+ * @author fernandocuscomejia
+ *
+ */
 @ManagedBean
 @ViewScoped
 public class ClienteMB {
@@ -36,7 +41,10 @@ public class ClienteMB {
 		listar();
 	}
 
-	
+	/**
+	 * 
+	 * @return, creamos un usuario
+	 */
 	public String crearUsuario() {
 		gestion.crearUsuario(usuario);
 		usuario = null;
@@ -44,10 +52,17 @@ public class ClienteMB {
 		return null;
 	}
 	
+	/**
+	 * Listamos los usuarios
+	 * 
+	 */
 	public void listar() {
 		usuarios = gestion.listaUsuarios();
 	}
 	
+	/**
+	 * Buscaamos un usuarios
+	 */
 	public void buscar() {
 		if( id != null) {
 			usuario = gestion.buscarUsuario(Integer.parseInt(id));
@@ -56,6 +71,11 @@ public class ClienteMB {
 		}
 	}
 	
+	/**
+	 * 
+	 * @param id, eliminamos un clinte
+	 * @return
+	 */
 	public String eliminar(int id) {
 		gestion.eliminarUsuario(id);
 		System.out.println("id------ "+id);
@@ -63,6 +83,10 @@ public class ClienteMB {
 		return null;
 	}
 	
+	/**
+	 * 
+	 * @return, redireccion para actualizar
+	 */
 	public String actualizar() {
 		gestion.actualizarUsuario(usuario);
 		return "cliente?faces-redirect=true";

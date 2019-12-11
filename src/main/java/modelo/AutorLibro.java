@@ -6,6 +6,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Transient;
+/**
+ * 
+ * @author fernandocuscomejia
+ *
+ */
 
 @Entity
 public class AutorLibro {

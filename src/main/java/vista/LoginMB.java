@@ -7,6 +7,11 @@ import javax.inject.Inject;
 
 import negocio.ClienteON;
 
+/**
+ * 
+ * @author fernandocuscomejia
+ *
+ */
 @ManagedBean
 public class LoginMB {
 
@@ -25,6 +30,10 @@ public class LoginMB {
 		mensaje = new String();
 	}
 	
+	/**
+	 * 
+	 * @return, login al usuarios
+	 */
 	public String login() {
 		mensaje = login.login(correo, password);
 		return "inicio";

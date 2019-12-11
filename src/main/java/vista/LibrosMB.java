@@ -15,7 +15,11 @@ import modelo.Categoria;
 import modelo.Libro;
 import negocio.AutorON;
 import negocio.LibroON;
-
+/**
+ * 
+ * @author fernandocuscomejia
+ *
+ */
 @ManagedBean
 @ViewScoped
 public class LibrosMB {
@@ -38,7 +42,10 @@ public class LibrosMB {
 	}
 	
 	
-	
+	/**
+	 * 
+	 * @return, creamos un libro
+	 */
 	public String crearLibro() {
 		gestion.crearLibro(libro);
 		libro = null;
@@ -46,16 +53,27 @@ public class LibrosMB {
 		return null;
 	}
 	
+	/**
+	 * Listamos los libros
+	 */
 	public void listar() {
 		libros = gestion.listarLibros();
 	}
 	
+	/**
+	 * 
+	 * @param id, eliminamos el libro
+	 * @return
+	 */
 	public String eliminar(int id) {
 		gestion.eliminarLibro(id);
 		listar();
 		return null;
 	}
 	
+	/**
+	 * Agregamos un autor al libro
+	 */
 	public void agregarAutorLibro() {
 		libro.agregarLibroAutor(new AutorLibro());
 	}
@@ -70,7 +88,11 @@ public class LibrosMB {
 //		return null;
 //	}
 	
-	
+	/**
+	 * 
+	 * @param al, buscamos un Autor, para agregar al libro
+	 * @return
+	 */
 	public String buscarAutor(AutorLibro al) {
 		System.out.println(al.getTemp()+" AUTORLIBRO");
 		try {

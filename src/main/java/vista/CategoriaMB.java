@@ -9,6 +9,11 @@ import javax.inject.Inject;
 import modelo.Categoria;
 import negocio.CategoriaON;
 
+/**
+ * 
+ * @author fernandocuscomejia
+ *
+ */
 @ManagedBean
 public class CategoriaMB {
 	
@@ -27,7 +32,10 @@ public class CategoriaMB {
 		
 	}
 
-	
+	/**
+	 * 
+	 * @return, llama al crear del On
+	 */
 	public String crearCategoria() {
 		gestion.crearCategoria(categoria);
 		categoria = null;
@@ -36,17 +44,27 @@ public class CategoriaMB {
 		return null;
 	}
 	
+	/**
+	 * llama al listar del On
+	 */
 	public void listar() {
 		categorias = gestion.listarCategorias();
 	}
 	
-	
+	/**
+	 * 
+	 * @param id, elimina unca categoria
+	 * @return
+	 */
 	public String eliminar(int id) {
 		gestion.eliminarCategoria(id);
 		listar();
 		return null;
 	}
 	
+	/**
+	 * Busca una categoria
+	 */
 	public void buscar() {
 		System.out.println("BUSCANDO "+id);
 		if( id != null) {
@@ -56,11 +74,20 @@ public class CategoriaMB {
 		}
 	}
 	
+	/**
+	 * 
+	 * @param categoria, redirijimos para actualizar una categoria
+	 * @return
+	 */
 	public String redirect(Categoria categoria) {
 		System.out.println("ID: "+id);
 		return "categoriabuscar?faces-redirect=true&id="+categoria.getId();
 	}
 	
+	/**
+	 * 
+	 * @return, redirije a la anterior
+	 */
 	public String actualizar() {
 		gestion.actualizarCategoria(categoria);
 		return "categorias?faces-redirect=true";
