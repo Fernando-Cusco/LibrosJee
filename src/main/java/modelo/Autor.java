@@ -1,6 +1,7 @@
 package modelo;
 
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -23,7 +24,7 @@ import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "autores")
-public class Autor{
+public class Autor implements Serializable{
 	
 	@Id
 	@GeneratedValue
@@ -42,7 +43,7 @@ public class Autor{
 	@NotNull
 	private int numeroPublicacion;
 	
-	@ManyToMany(mappedBy = "autores")
+	@ManyToMany(fetch = FetchType.EAGER, mappedBy = "autores")
 	private List<Libro> libros;
 
 	public int getId() {
@@ -83,6 +84,12 @@ public class Autor{
 
 	public void setLibros(List<Libro> libros) {
 		this.libros = libros;
+	}
+
+	@Override
+	public String toString() {
+		return "Autor [id=" + id + ", nombres=" + nombres + ", nacionalidad=" + nacionalidad + ", numeroPublicacion="
+				+ numeroPublicacion + ", libros=" + libros + "]";
 	}
 
 	

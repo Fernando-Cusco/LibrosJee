@@ -15,7 +15,6 @@ import modelo.Libro;;
  *
  */
 
-@Stateless
 public class LibroDao {
 	@Inject
 	private EntityManager em;
@@ -71,12 +70,13 @@ public class LibroDao {
 	 * @return, devuelve una lista de libros
 	 */
 	public List<Libro> listarLibros() {
+		//"SELECT d  FROM Docente d  JOIN FETCH d.actividades a   WHERE d.codigo = :codigo"
 		String jpql = "select l from Libro l";
 		Query query = em.createQuery(jpql, Libro.class);
 		List<Libro> libroz = query.getResultList();
-//		for(Libro l: libroz) {
-//			l.getAutores().size();
-//		}
+		for(Libro l: libroz) {
+			l.getAutores().size();
+		}
 		return libroz;
 	}
 	

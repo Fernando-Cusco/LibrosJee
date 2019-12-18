@@ -24,7 +24,9 @@ import negocio.LibroON;
 @ViewScoped
 public class LibrosMB {
 	
-	private Libro libro=new Libro();
+	private Libro libro;
+	
+	
 	private List<Libro> libros;
 	
 	
@@ -37,7 +39,7 @@ public class LibrosMB {
 	@PostConstruct
 	public void init() {
 		libros = gestion.getListadoLibrosAutor();
-		
+		libro = new Libro();
 		listar();
 	}
 	
@@ -48,7 +50,6 @@ public class LibrosMB {
 	 */
 	public String crearLibro() {
 		gestion.crearLibro(libro);
-		libro = null;
 		listar();
 		return null;
 	}
@@ -93,16 +94,16 @@ public class LibrosMB {
 	 * @param al, buscamos un Autor, para agregar al libro
 	 * @return
 	 */
-	public String buscarAutor(AutorLibro al) {
-		System.out.println(al.getTemp()+" AUTORLIBRO");
-		try {
-			Autor at = gestiona.buscarAutor(al.getTemp());
-			al.setAutor(at);
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
-		return null;
-	}
+//	public String buscarAutor(AutorLibro al) {
+//		System.out.println(al.getTemp()+" AUTORLIBRO");
+//		try {
+//			Autor at = gestiona.buscarAutor(al.getTemp());
+//			al.setAutor(at);
+//		} catch (Exception e) {
+//			// TODO: handle exception
+//		}
+//		return null;
+//	}
 	
 
 	public List<Libro> getLibros() {

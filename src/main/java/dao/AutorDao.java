@@ -15,7 +15,7 @@ import modelo.Autor;import modelo.Libro;
  *
  */
 
-@Stateless
+
 public class AutorDao {
 	@Inject
 	private EntityManager em;

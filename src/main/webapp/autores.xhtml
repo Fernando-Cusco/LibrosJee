@@ -67,49 +67,6 @@
 					
 					
 					
-					<h:dataTable value="#{autorMB.autor.autoresLibros}" var="lib">
-					
-					<h:column>
-						<f:facet name="header">Titulo</f:facet>
-						<h:inputText value="#{lib.libro.titulo}" />
-					</h:column>
-					
-					<h:column>
-						<f:facet name="header">Descripcion:</f:facet>
-						<h:inputTextarea value="#{lib.libro.descripcion}" />
-					</h:column>
-					
-					
-					<h:column>
-						<f:facet name="header">Portada</f:facet>
-						<h:inputText value="#{lib.libro.portada}"/>
-					</h:column>
-					
-					
-					<h:column>
-						<f:facet name="header">Fecha de publicacion</f:facet>
-						<h:inputText value="#{lib.libro.fechaPublicacion}">
-							<f:convertDateTime pattern="dd/MM/yyyy"/>
-						</h:inputText>
-					</h:column>
-					
-					<h:column>
-						<f:facet name="header">Numero de paginas</f:facet>
-						<h:inputText value="#{lib.libro.paginas}"/>
-					</h:column>
-					
-					<h:column>
-						<f:facet name="header">Precio</f:facet>
-						<h:inputText value="#{lib.libro.precio}"/>
-					</h:column>
-					
-					<h:column>
-						<f:facet name="header">Stock</f:facet>
-						<h:inputText value="#{lib.libro.stock}"/>
-					</h:column>
-					
-				</h:dataTable>
-					
 					
 					
 				</h:form>

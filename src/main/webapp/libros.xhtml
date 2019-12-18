@@ -65,14 +65,17 @@
 				
 				<div>
 					<h3>Agregar Autor</h3>
-					<h:dataTable value="#{librosMB.libro.autores}" var="autlib">
+					<h:dataTable value="#{librosMB.libro.autores}" var="aut">
 						<h:column>
 							<f:facet name="header">Nombre</f:facet>
-							<h:inputText value="#{autlib.temp}" id="autor">
-								<f:ajax render="autorlb" execute="autor" listener="#{librosMB.buscarAutor(autlib)}"></f:ajax>
+							<h:inputText value="#{aut.nombres}">
 							</h:inputText>
-							<h:outputText id="autorlb" value="#{tipolibro.autor.nombre}" />
-							<h:message for="txtAutor"/>
+							<f:facet name="header">Nacionalidad</f:facet>
+							<h:inputText value="#{aut.nacionalidad}">
+							</h:inputText>
+							<f:facet name="header">Numero Pu</f:facet>
+							<h:inputText value="#{aut.numeroPublicacion}">
+							</h:inputText>
 						</h:column>
 					</h:dataTable>
 					<h:commandButton action="#{librosMB.agregarAutorLibro()}" value="Agregar Autor" />

@@ -1,6 +1,7 @@
 package modelo;
 
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -28,7 +29,7 @@ import javax.validation.constraints.Size;
  */
 
 @Entity
-public class Libro{
+public class Libro implements Serializable{
 	
 	@Id
 	@GeneratedValue
@@ -79,6 +80,7 @@ public class Libro{
 	
 	
 	public void addAuthor(Autor a) {
+		System.out.println("AUTOR NUEVO "+a.toString());
 		if (this.autores == null) {
 			this.autores = new ArrayList<Autor>();
 		}
