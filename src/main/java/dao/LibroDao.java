@@ -59,9 +59,9 @@ public class LibroDao {
 	 * @return, devuelve un libro encontrado
 	 */
 	public Libro buscarLibro(int id) {
-		String jpql = "SELECT l FROM Libro l JOIN FETCH l where l.id = :codigo";
+		String jpql = "SELECT l FROM Libro l where l.id = :id";
 		Query query = em.createQuery(jpql, Libro.class);
-		query.setParameter("codigo", id);
+		query.setParameter("id", id);
 		Libro libro = (Libro) query.getSingleResult();
 		return libro;
 	}
@@ -105,7 +105,7 @@ public class LibroDao {
 		
 		List<Libro> libros = q.getResultList();
 		for (Libro libro : libros) {
-		libro.getAutoresLibros().size();
+		libro.getAutores().size();
 		}
 		
 		return libros;

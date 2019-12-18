@@ -39,7 +39,11 @@ public class ClienteDao {
 	 * @param id, elimina un cliente por su id
 	 */
 	public void eliminarUsuario(int id) {
-		em.remove(buscarUsuario(id));
+		em.remove(buscar(id));
+	}
+	
+	public Cliente buscar(int id) {
+		return em.find(Cliente.class, id);
 	}
 	
 

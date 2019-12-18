@@ -12,6 +12,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
@@ -55,14 +57,16 @@ public class Libro{
 	@NotNull
 	private int stock;
 	
-//	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-//	@JoinColumn(name = "libros_id")
-//	private List<Categoria> categorias;
+
 	
 	
-	@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
-	@JoinColumn(name = "libro_id")
-	private List<AutorLibro> autoresLibros;
+	@JoinTable(
+			name = "libros_autores",
+			joinColumns = @JoinColumn(name = "fk_libro", nullable = false),
+			inverseJoinColumns = @JoinColumn(name = "fk_autot", nullable = false)
+			)
+	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	private List<Autor> autores;
 	
 //	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 //	@JoinColumn(name = "libro")
@@ -72,6 +76,16 @@ public class Libro{
 	@OneToOne
 	@JoinColumn(name = "detalle_id")
 	private Detalle detalle;
+	
+	
+	public void addAuthor(Autor a) {
+		if (this.autores == null) {
+			this.autores = new ArrayList<Autor>();
+		}
+		this.autores.add(a);
+	}
+	
+	
 	
 	public int getId() {
 		return id;
@@ -135,12 +149,11 @@ public class Libro{
 //	public void setVotos(List<Voto> votos) {
 //		this.votos = votos;
 //	}
-	
-	public List<AutorLibro> getAutoresLibros() {
-		return autoresLibros;
+	public List<Autor> getAutores() {
+		return autores;
 	}
-	public void setAutoresLibros(List<AutorLibro> autoresLibros) {
-		this.autoresLibros = autoresLibros;
+	public void setAutores(List<Autor> autores) {
+		this.autores = autores;
 	}
 	public Detalle getDetalle() {
 		return detalle;
@@ -149,36 +162,30 @@ public class Libro{
 		this.detalle = detalle;
 	}
 	
-	/**
-	 * 
-	 * @param al, agregamos un libroautor 
-	 */
-	public void agregarLibroAutor(AutorLibro al) {
-		if(this.autoresLibros == null) {
-			this.autoresLibros = new ArrayList<AutorLibro>();
-		}
-		this.autoresLibros.add(al);
-	}
 	
-	/**
-	 * 
-	 * @param tl, agregamps un tipolibro 
-	 */
-	public void addTipoLibro(AutorLibro tl) {
-		if(this.autoresLibros==null)
-			this.autoresLibros = new ArrayList<>();
-		this.autoresLibros.add(tl);
-		
-	}
 	
-//	
-//	public void agregarCategoria(Categoria categoria) {
-//		System.out.println("CATEGORIA: "+categoria.toString());
-//		if(categorias == null) {
-//			categorias = new ArrayList<Categoria>();
+//	/**
+//	 * 
+//	 * @param al, agregamos un libroautor 
+//	 */
+//	public void agregarLibroAutor(AutorLibro al) {
+//		if(this.autoresLibros == null) {
+//			this.autoresLibros = new ArrayList<AutorLibro>();
 //		}
-//		this.categorias.add(categoria);
+//		this.autoresLibros.add(al);
+//	}
+//	
+//	/**
+//	 * 
+//	 * @param tl, agregamps un tipolibro 
+//	 */
+//	public void addTipoLibro(AutorLibro tl) {
+//		if(this.autoresLibros==null)
+//			this.autoresLibros = new ArrayList<>();
+//		this.autoresLibros.add(tl);
+//		
 //	}
 	
+
 	
 }

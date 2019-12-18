@@ -10,7 +10,9 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 /**
@@ -20,6 +22,7 @@ import javax.validation.constraints.Size;
  */
 
 @Entity
+@Table(name = "autores")
 public class Autor{
 	
 	@Id
@@ -39,9 +42,8 @@ public class Autor{
 	@NotNull
 	private int numeroPublicacion;
 	
-	@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
-	@JoinColumn(name = "autor_id")
-	private List<AutorLibro> autoresLibros;
+	@ManyToMany(mappedBy = "autores")
+	private List<Libro> libros;
 
 	public int getId() {
 		return id;
@@ -75,14 +77,16 @@ public class Autor{
 		this.numeroPublicacion = numeroPublicacion;
 	}
 
-	
-	public List<AutorLibro> getAutoresLibros() {
-		return autoresLibros;
+	public List<Libro> getLibros() {
+		return libros;
 	}
 
-	public void setAutoresLibros(List<AutorLibro> autoresLibros) {
-		this.autoresLibros = autoresLibros;
+	public void setLibros(List<Libro> libros) {
+		this.libros = libros;
 	}
+
+	
+	
 
 //	public void agregarLibros(Libro libro) {
 //		if(libros == null) {

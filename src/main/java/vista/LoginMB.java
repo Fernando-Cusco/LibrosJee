@@ -36,7 +36,14 @@ public class LoginMB {
 	 */
 	public String login() {
 		mensaje = login.login(correo, password);
-		return "inicio";
+		if(mensaje.equals("admin")) {
+			return "inicio";
+		}
+		if(mensaje.equals("cliente" )) {
+			mensaje = "El usuario no tiene permisos";
+		}
+		return null;
+		
 	}
 
 	public String getCorreo() {

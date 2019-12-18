@@ -55,8 +55,8 @@ public class LibroON {
 	 * 
 	 * @param id, llama al buscarLibro libro dao
 	 */
-	public void buscarLibro(int id) {
-		libDao.buscarLibro(id);
+	public Libro buscarLibro(int id) {
+		return libDao.buscarLibro(id);
 	}
 	
 	/**

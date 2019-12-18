@@ -26,7 +26,7 @@ public class LibrosMB {
 	
 	private Libro libro=new Libro();
 	private List<Libro> libros;
-	private List<Autor> listadoAutoresLibros;
+	
 	
 	@Inject
 	private LibroON gestion;
@@ -37,7 +37,7 @@ public class LibrosMB {
 	@PostConstruct
 	public void init() {
 		libros = gestion.getListadoLibrosAutor();
-		listadoAutoresLibros=gestion.getListadoAutorLibros();
+		
 		listar();
 	}
 	
@@ -75,7 +75,7 @@ public class LibrosMB {
 	 * Agregamos un autor al libro
 	 */
 	public void agregarAutorLibro() {
-		libro.agregarLibroAutor(new AutorLibro());
+		libro.addAuthor(new Autor());
 	}
 	
 	public String redirect() {

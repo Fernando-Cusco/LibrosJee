@@ -9,6 +9,7 @@
    </title>
 </h:head>
 <h:body>
+<center>
 	<ui:composition template="menu.xhtml">
 		
 		<ui:define name="content">
@@ -64,7 +65,7 @@
 				
 				<div>
 					<h3>Agregar Autor</h3>
-					<h:dataTable value="#{librosMB.libro.autoresLibros}" var="autlib">
+					<h:dataTable value="#{librosMB.libro.autores}" var="autlib">
 						<h:column>
 							<f:facet name="header">Nombre</f:facet>
 							<h:inputText value="#{autlib.temp}" id="autor">
@@ -136,6 +137,12 @@
 		</ui:define>	
 
 	</ui:composition>
+	<ui:composition template="menu.xhtml">
+
+		<ui:define name="pie">
+		</ui:define>
+		</ui:composition>
+</center>		
 </h:body>
 	
 	

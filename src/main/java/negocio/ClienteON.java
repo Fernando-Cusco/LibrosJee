@@ -51,7 +51,7 @@ public class ClienteON {
 	 * @return, devuelve una categoria
 	 */
 	public Cliente buscarUsuario(int id) {
-		return usuDao.buscarUsuario(id);
+		return usuDao.buscar(id);
 	}
 	
 	/**
